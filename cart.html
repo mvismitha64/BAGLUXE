@@ -1,0 +1,1648 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BAGLUXE | My Cart</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: #fff;
+    color: #211c18;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* TOP BAR */
+
+.top-bar {
+    background: #201a15;
+    color: white;
+    padding: 10px 25px;
+    font-size: 12px;
+}
+
+.top-bar a {
+    color: white;
+}
+
+.top-left {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.top-bar a:hover {
+    color: #c19a7b;
+}
+
+/* NAVBAR */
+
+.bag-navbar {
+    min-height: 95px;
+    background: #fffdf9 !important;
+    border-bottom: 1px solid #eee7df;
+    z-index: 1000;
+}
+
+.logo-icon {
+    font-size: 45px;
+    color: #222;
+}
+
+.logo-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 29px;
+    letter-spacing: 3px;
+    color: #222;
+    margin: 0;
+}
+
+.logo-text span {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #777;
+}
+
+.bag-navbar .navbar-nav {
+    gap: 22px;
+}
+
+.bag-navbar .nav-link {
+    color: #222;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 35px 0 !important;
+    position: relative;
+}
+
+.bag-navbar .nav-link:hover {
+    color: #8d6e5a;
+}
+
+.nav-icons {
+    gap: 22px;
+}
+
+.icon-link {
+    position: relative;
+    color: #222;
+    font-size: 21px;
+}
+
+.icon-link:hover {
+    color: #8d6e5a;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background: #302820;
+    color: white;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CART SECTION */
+
+.cart-section {
+    padding: 55px 5%;
+    min-height: 450px;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.page-title p {
+    color: #777;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* CART LAYOUT */
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 30px;
+    align-items: start;
+}
+
+#cart-products {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* CART ITEMS */
+
+.cart-item {
+    display: flex;
+    gap: 22px;
+    padding: 18px;
+    border: 1px solid #e5e5e5;
+    background: white;
+}
+
+.cart-item img {
+    width: 155px;
+    height: 165px;
+    object-fit: cover;
+    background: #f5f5f5;
+}
+
+.cart-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cart-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 23px;
+    margin-bottom: 10px;
+}
+
+.cart-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.quantity-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.quantity-area button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.quantity-area button:hover {
+    background: #f2ece7;
+}
+
+.quantity-area span {
+    font-size: 15px;
+    min-width: 15px;
+    text-align: center;
+}
+
+.remove-btn {
+    margin-top: 15px;
+    border: none;
+    background: none;
+    color: #8b3d32;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.remove-btn:hover {
+    text-decoration: underline;
+}
+
+/* ORDER SUMMARY */
+
+.order-summary {
+    border: 1px solid #e5e5e5;
+    padding: 25px;
+    background: #fffdf9;
+}
+
+.order-summary h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 17px;
+    font-size: 14px;
+    color: #555;
+}
+
+.summary-total {
+    border-top: 1px solid #ddd;
+    padding-top: 18px;
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #211c18;
+}
+
+.checkout-btn {
+    width: 100%;
+    height: 48px;
+    background: #63351e;
+    color: white;
+    border: none;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.checkout-btn:hover {
+    background: #432313;
+}
+
+.continue-link {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    color: #63351e;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* EMPTY CART */
+
+.empty-cart {
+    text-align: center;
+    padding: 65px 15px;
+    border: 1px solid #eee;
+}
+
+.empty-cart i {
+    font-size: 55px;
+    color: #b9a69a;
+    margin-bottom: 20px;
+}
+
+.empty-cart h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.empty-cart p {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.shop-btn {
+    display: inline-block;
+    background: #63351e;
+    color: white;
+    padding: 13px 30px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.shop-btn:hover {
+    background: #432313;
+    color: white;
+}
+
+/* CHECKOUT MODAL */
+
+.checkout-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.checkout-modal.show {
+    display: flex;
+}
+
+.checkout-box {
+    background: #fffdf9;
+    width: 100%;
+    max-width: 450px;
+    padding: 35px;
+    position: relative;
+    text-align: center;
+    animation: modalOpen 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@keyframes modalOpen {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.checkout-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    border: none;
+    background: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: #555;
+}
+
+.checkout-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.checkout-box p {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.checkout-icon {
+    font-size: 45px;
+    color: #63351e;
+    margin-bottom: 15px;
+}
+
+.checkout-details {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+
+.checkout-details div {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.checkout-details .final-total {
+    font-weight: bold;
+    font-size: 17px;
+    color: #211c18;
+}
+
+.modal-continue-btn {
+    width: 100%;
+    padding: 13px;
+    background: #63351e;
+    color: white;
+    border: none;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-continue-btn:hover {
+    background: #432313;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 991px) {
+
+    .bag-navbar {
+        padding: 12px 0;
+    }
+
+    .bag-navbar .nav-link {
+        padding: 12px 10px !important;
+    }
+
+    .nav-icons {
+        padding: 15px 10px;
+    }
+
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .order-summary {
+        width: 100%;
+    }
+}
+
+@media(max-width: 768px) {
+
+    .top-bar .container-fluid {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .top-left {
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .page-title h2 {
+        font-size: 26px;
+    }
+}
+
+@media(max-width: 550px) {
+
+    .logo-icon {
+        font-size: 32px;
+    }
+
+    .logo-text h1 {
+        font-size: 22px;
+    }
+
+    .logo-text span {
+        font-size: 8px;
+    }
+
+    .nav-icons {
+        gap: 18px;
+    }
+
+    .cart-section {
+        padding: 35px 12px;
+    }
+
+    .cart-item {
+        gap: 12px;
+        padding: 10px;
+    }
+
+    .cart-item img {
+        width: 105px;
+        height: 130px;
+    }
+
+    .cart-info h3 {
+        font-size: 13px;
+        line-height: 19px;
+    }
+
+    .cart-price {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .quantity-area {
+        gap: 8px;
+    }
+
+    .quantity-area button {
+        width: 27px;
+        height: 27px;
+    }
+
+    .order-summary {
+        padding: 18px;
+    }
+
+    .checkout-box {
+        padding: 30px 20px;
+    }
+}
+
+/* ACCOUNT MODAL */
+
+.account-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 3000;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.account-modal.show {
+    display: flex;
+}
+
+.account-box {
+    background: #fffdf9;
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    position: relative;
+    text-align: center;
+    animation: accountOpen .3s ease;
+}
+
+@keyframes accountOpen {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.account-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 27px;
+    cursor: pointer;
+    color: #555;
+}
+
+.account-icon {
+    font-size: 45px;
+    color: #63351e;
+    margin-bottom: 15px;
+}
+
+.account-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.account-box p {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+.account-input {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 14px;
+}
+
+.account-input:focus {
+    border-color: #63351e;
+}
+
+.account-btn {
+    width: 100%;
+    padding: 13px;
+    background: #63351e;
+    color: white;
+    border: none;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.account-btn:hover {
+    background: #432313;
+}
+
+.account-switch {
+    margin-top: 18px;
+    font-size: 13px;
+    color: #777;
+}
+
+.account-switch button {
+    border: none;
+    background: none;
+    color: #63351e;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.account-user-email {
+    font-weight: 600;
+    color: #63351e !important;
+    word-break: break-word;
+}
+
+@media(max-width: 480px) {
+    .account-box {
+        padding: 30px 20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+    <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+        <div class="top-left">
+
+            <span>
+                <i class="fa-solid fa-truck"></i>
+                Free Shipping on Orders Above ₹999
+            </span>
+
+            <span>Easy Returns & Exchanges</span>
+
+            <a href="#">Track Order</a>
+
+            <a href="#">
+                Wishlist (<span id="top-wishlist-count">0</span>)
+            </a>
+
+        </div>
+
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+        </div>
+
+    </div>
+</div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg bag-navbar sticky-top">
+
+    <div class="container-fluid px-4">
+
+        <a href="index.html" class="navbar-brand d-flex align-items-center gap-2">
+
+           <a href="javascript:void(0)" 
+   class="icon-link" 
+   title="My Account"
+   onclick="openAccountModal()">
+
+    <i class="fa-regular fa-user"></i>
+
+</a>
+
+            <div class="logo-text">
+                <h1>BAGLUXE</h1>
+                <span>HANDBAG STORE</span>
+            </div>
+
+        </a>
+
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">HOME</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#categories">SHOP</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#newarrivals">NEW ARRIVALS</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#about">ABOUT US</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#contact">CONTACT US</a>
+                </li>
+
+            </ul>
+
+            <div class="nav-icons d-flex align-items-center">
+
+                <a href="#" class="icon-link" title="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+
+                <a href="wishlist.html" class="icon-link" title="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="cart-count" id="nav-wishlist-count">0</span>
+                </a>
+
+                <a href="javascript:void(0)" 
+   class="icon-link" 
+   title="My Account"
+   onclick="openAccountModal()">
+
+    <i class="fa-regular fa-user"></i>
+
+</a>
+                <a href="cart.html" class="icon-link" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count" id="nav-cart-count">0</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- CART SECTION -->
+
+<section class="cart-section">
+
+    <div class="page-title">
+        <h2>MY SHOPPING CART</h2>
+        <p>Review your favourite handbags before checkout</p>
+    </div>
+
+    <div id="cart-content">
+
+        <div class="cart-layout">
+
+            <div id="cart-products"></div>
+
+            <div class="order-summary">
+
+                <h3>ORDER SUMMARY</h3>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">₹0</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span id="shipping">FREE</span>
+                </div>
+
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span id="total">₹0</span>
+                </div>
+
+                <button class="checkout-btn" onclick="checkout()">
+                    PROCEED TO CHECKOUT
+                </button>
+
+                <a href="index.html" class="continue-link">
+                    CONTINUE SHOPPING
+                </a>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CHECKOUT MODAL -->
+
+<div class="checkout-modal" id="checkoutModal">
+
+    <div class="checkout-box">
+
+        <button class="checkout-close"
+            onclick="closeCheckout()"
+            aria-label="Close checkout">
+            &times;
+        </button>
+
+        <div class="checkout-icon">
+            <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+
+        <h2>Checkout</h2>
+
+        <p>Review your order before proceeding.</p>
+
+        <div class="checkout-details">
+
+            <div>
+                <span>Total Items</span>
+                <strong id="checkout-items">0</strong>
+            </div>
+
+            <div>
+                <span>Subtotal</span>
+                <strong id="checkout-subtotal">₹0</strong>
+            </div>
+
+            <div>
+                <span>Shipping</span>
+                <strong>FREE</strong>
+            </div>
+
+            <div class="final-total">
+                <span>Total Amount</span>
+                <strong id="checkout-total">₹0</strong>
+            </div>
+
+        </div>
+
+        <p>
+            Your order summary is ready.
+            Payment and order placement are not yet connected.
+        </p>
+
+        <button class="modal-continue-btn" onclick="completeCheckout()">
+    CHECK OUT
+</button>
+    </div>
+</div>
+<!-- ACCOUNT MODAL -->
+
+<div class="account-modal" id="accountModal">
+
+    <div class="account-box">
+
+        <button class="account-close"
+                onclick="closeAccountModal()">
+            &times;
+        </button>
+
+        <!-- SIGN IN SECTION -->
+
+        <div id="signInSection">
+
+            <div class="account-icon">
+                <i class="fa-regular fa-user"></i>
+            </div>
+
+            <h2>Welcome Back!</h2>
+
+            <p>Sign in to your BAGLUXE account</p>
+
+            <form onsubmit="signIn(event)">
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    class="account-input"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    class="account-input"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <button type="submit" class="account-btn">
+                    SIGN IN
+                </button>
+
+            </form>
+
+            <div class="account-switch">
+                New to BAGLUXE?
+                <button onclick="showSignUp()">
+                    Create Account
+                </button>
+            </div>
+
+        </div>
+
+        <!-- SIGN UP SECTION -->
+
+        <div id="signUpSection" style="display:none;">
+
+            <div class="account-icon">
+                <i class="fa-solid fa-user-plus"></i>
+            </div>
+
+            <h2>Create Account</h2>
+
+            <p>Join the BAGLUXE family</p>
+
+            <form onsubmit="signUp(event)">
+
+                <input
+                    type="text"
+                    id="signupName"
+                    class="account-input"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="signupEmail"
+                    class="account-input"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="signupPassword"
+                    class="account-input"
+                    placeholder="Create password"
+                    minlength="6"
+                    required
+                >
+
+                <button type="submit" class="account-btn">
+                    CREATE ACCOUNT
+                </button>
+
+            </form>
+
+            <div class="account-switch">
+                Already have an account?
+                <button onclick="showSignIn()">
+                    Sign In
+                </button>
+            </div>
+
+        </div>
+
+        <!-- SIGN OUT SECTION -->
+
+        <div id="signOutSection" style="display:none;">
+
+            <div class="account-icon">
+                <i class="fa-regular fa-circle-user"></i>
+            </div>
+
+            <h2>My Account</h2>
+
+            <p>You are signed in as</p>
+
+            <p class="account-user-email" id="accountEmail"></p>
+
+            <button class="account-btn" onclick="signOut()">
+                SIGN OUT
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+// SAFE LOCAL STORAGE READING
+
+function getStorage(key, fallback) {
+
+    try {
+        const data = JSON.parse(localStorage.getItem(key));
+        return data === null ? fallback : data;
+    } catch(error) {
+        return fallback;
+    }
+
+}
+
+// CONVERT PRICE TO NUMBER
+
+function getPrice(price) {
+
+    if (typeof price === "number") {
+        return price;
+    }
+
+    return Number(
+        String(price || "0").replace(/[^\d.]/g, "")
+    ) || 0;
+
+}
+
+// GET CART AND WISHLIST
+
+let cart = getStorage("cart", []);
+let wishlist = getStorage("wishlist", []);
+
+if (!Array.isArray(cart)) cart = [];
+if (!Array.isArray(wishlist)) wishlist = [];
+
+// NORMALIZE EXISTING CART PRODUCTS
+
+cart = cart.map(product => ({
+
+    ...product,
+
+    price: getPrice(product.price),
+
+    quantity: Math.max(1, Number(product.quantity) || 1)
+
+}));
+
+// SAVE CART
+
+function saveCart() {
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    const totalQuantity = cart.reduce((total, item) => {
+        return total + Number(item.quantity || 1);
+    }, 0);
+
+    localStorage.setItem("cartCount", totalQuantity);
+
+}
+
+// UPDATE NAVBAR COUNTS
+
+function updateCounts() {
+
+    wishlist = getStorage("wishlist", []);
+
+    if (!Array.isArray(wishlist)) wishlist = [];
+
+    const wishlistCount = wishlist.length;
+
+    const cartCount = cart.reduce((total, item) => {
+        return total + Number(item.quantity || 1);
+    }, 0);
+
+    document.getElementById("nav-wishlist-count").textContent =
+        wishlistCount;
+
+    document.getElementById("top-wishlist-count").textContent =
+        wishlistCount;
+
+    document.getElementById("nav-cart-count").textContent =
+        cartCount;
+
+}
+
+// FORMAT PRICE
+
+function formatPrice(price) {
+
+    return "₹" + Number(price).toLocaleString("en-IN");
+
+}
+
+// UPDATE ORDER SUMMARY
+
+function updateSummary() {
+
+    const subtotal = cart.reduce((total, item) => {
+
+        return total +
+            (getPrice(item.price) * Number(item.quantity || 1));
+
+    }, 0);
+
+    document.getElementById("subtotal").textContent =
+        formatPrice(subtotal);
+
+    document.getElementById("total").textContent =
+        formatPrice(subtotal);
+
+}
+
+// DISPLAY CART PRODUCTS
+
+function displayCart() {
+
+    const container = document.getElementById("cart-products");
+    const content = document.getElementById("cart-content");
+
+    container.innerHTML = "";
+
+    // EMPTY CART
+
+    if (cart.length === 0) {
+
+        content.innerHTML = `
+
+            <div class="empty-cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <h3>Your Shopping Cart is Empty!</h3>
+
+                <p>
+                    Looks like you haven't added any handbags yet.
+                </p>
+
+                <a href="index.html#newarrivals" class="shop-btn">
+                    CONTINUE SHOPPING
+                </a>
+
+            </div>
+
+        `;
+
+        updateCounts();
+        updateSummary();
+
+        return;
+
+    }
+
+    // CART PRODUCTS
+
+    cart.forEach((product, index) => {
+
+        const item = document.createElement("div");
+        item.className = "cart-item";
+
+        // IMAGE
+
+        const img = document.createElement("img");
+
+        img.src = product.image || "";
+        img.alt = product.name || "Handbag";
+
+        img.onerror = function() {
+            this.style.display = "none";
+        };
+
+        // PRODUCT INFO
+
+        const info = document.createElement("div");
+        info.className = "cart-info";
+
+        // NAME
+
+        const name = document.createElement("h3");
+        name.textContent = product.name || "Handbag";
+
+        // PRICE
+
+        const price = document.createElement("p");
+        price.className = "cart-price";
+        price.textContent = formatPrice(getPrice(product.price));
+
+        // QUANTITY AREA
+
+        const quantityArea = document.createElement("div");
+        quantityArea.className = "quantity-area";
+
+        // MINUS BUTTON
+
+        const minus = document.createElement("button");
+
+        minus.type = "button";
+        minus.textContent = "−";
+        minus.setAttribute("aria-label", "Decrease quantity");
+
+        minus.addEventListener("click", function() {
+            changeQuantity(index, -1);
+        });
+
+        // QUANTITY
+
+        const quantity = document.createElement("span");
+        quantity.textContent = product.quantity;
+
+        // PLUS BUTTON
+
+        const plus = document.createElement("button");
+
+        plus.type = "button";
+        plus.textContent = "+";
+        plus.setAttribute("aria-label", "Increase quantity");
+
+        plus.addEventListener("click", function() {
+            changeQuantity(index, 1);
+        });
+
+        quantityArea.appendChild(minus);
+        quantityArea.appendChild(quantity);
+        quantityArea.appendChild(plus);
+
+        // REMOVE BUTTON
+
+        const remove = document.createElement("button");
+
+        remove.className = "remove-btn";
+        remove.textContent = "REMOVE ITEM";
+
+        remove.addEventListener("click", function() {
+            removeItem(index);
+        });
+
+        // ADD ELEMENTS
+
+        info.appendChild(name);
+        info.appendChild(price);
+        info.appendChild(quantityArea);
+        info.appendChild(remove);
+
+        item.appendChild(img);
+        item.appendChild(info);
+
+        container.appendChild(item);
+
+    });
+
+    updateCounts();
+    updateSummary();
+
+}
+
+// CHANGE QUANTITY
+
+function changeQuantity(index, amount) {
+
+    if (!cart[index]) return;
+
+    cart[index].quantity =
+        Number(cart[index].quantity || 1) + amount;
+
+    if (cart[index].quantity < 1) {
+        cart[index].quantity = 1;
+    }
+
+    saveCart();
+    displayCart();
+
+}
+
+// REMOVE PRODUCT
+
+function removeItem(index) {
+
+    if (!confirm("Are you sure you want to remove this item?")) {
+        return;
+    }
+
+    cart.splice(index, 1);
+
+    saveCart();
+    displayCart();
+
+}
+
+// OPEN CHECKOUT MODAL
+
+function checkout() {
+
+    if (cart.length === 0) {
+        alert("Your shopping cart is empty!");
+        return;
+    }
+
+    const totalItems = cart.reduce((total, item) => {
+        return total + Number(item.quantity || 1);
+    }, 0);
+
+    const subtotal = cart.reduce((total, item) => {
+        return total +
+            (getPrice(item.price) * Number(item.quantity || 1));
+    }, 0);
+
+    document.getElementById("checkout-items").textContent =
+        totalItems;
+
+    document.getElementById("checkout-subtotal").textContent =
+        formatPrice(subtotal);
+
+    document.getElementById("checkout-total").textContent =
+        formatPrice(subtotal);
+
+    document.getElementById("checkoutModal").classList.add("show");
+
+}
+
+// CLOSE CHECKOUT MODAL
+
+function closeCheckout() {
+
+    document.getElementById("checkoutModal").classList.remove("show");
+
+}
+// COMPLETE CHECKOUT AND CLEAR CART
+
+function completeCheckout() {
+
+    if (cart.length === 0) {
+        alert("Your shopping cart is empty!");
+        closeCheckout();
+        return;
+    }
+
+    // Clear all cart items
+    cart = [];
+
+    // Save empty cart to localStorage
+    saveCart();
+
+    // Update cart page
+    displayCart();
+
+    // Close checkout modal
+    closeCheckout();
+
+    // Success message
+    alert("Thank you for shopping with BAGLUXE! Your cart has been cleared.");
+
+}
+
+// CLOSE MODAL WHEN CLICKING OUTSIDE
+
+document.getElementById("checkoutModal").addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === this) {
+            closeCheckout();
+        }
+
+    }
+);
+
+// CLOSE MODAL WITH ESCAPE KEY
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeCheckout();
+    }
+
+});
+
+// INITIALIZE PAGE
+
+saveCart();
+displayCart();
+
+
+// =====================================
+// ACCOUNT MODAL
+// =====================================
+
+// OPEN ACCOUNT MODAL
+
+function openAccountModal() {
+
+    document.getElementById("accountModal")
+        .classList.add("show");
+
+    updateAccountModal();
+
+}
+
+
+// CLOSE ACCOUNT MODAL
+
+function closeAccountModal() {
+
+    document.getElementById("accountModal")
+        .classList.remove("show");
+
+}
+
+
+// SHOW SIGN IN
+
+function showSignIn() {
+
+    document.getElementById("signInSection").style.display = "block";
+
+    document.getElementById("signUpSection").style.display = "none";
+
+    document.getElementById("signOutSection").style.display = "none";
+
+}
+
+
+// SHOW SIGN UP
+
+function showSignUp() {
+
+    document.getElementById("signInSection").style.display = "none";
+
+    document.getElementById("signUpSection").style.display = "block";
+
+    document.getElementById("signOutSection").style.display = "none";
+
+}
+
+
+// UPDATE ACCOUNT MODAL
+
+function updateAccountModal() {
+
+    const user = JSON.parse(
+        localStorage.getItem("bagluxeUser") || "null"
+    );
+
+    if (user && user.email) {
+
+        document.getElementById("signInSection").style.display = "none";
+
+        document.getElementById("signUpSection").style.display = "none";
+
+        document.getElementById("signOutSection").style.display = "block";
+
+        document.getElementById("accountEmail").textContent = user.email;
+
+    } else {
+
+        showSignIn();
+
+    }
+
+}
+
+
+// SIGN UP
+
+function signUp(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("signupName").value.trim();
+
+    const email = document.getElementById("signupEmail").value.trim();
+
+    const password = document.getElementById("signupPassword").value;
+
+    const users = JSON.parse(
+        localStorage.getItem("bagluxeUsers") || "[]"
+    );
+
+    const existingUser = users.find(
+        user => user.email.toLowerCase() === email.toLowerCase()
+    );
+
+    if (existingUser) {
+
+        alert("This email is already registered!");
+
+        return;
+
+    }
+
+    users.push({
+        name: name,
+        email: email,
+        password: password
+    });
+
+    localStorage.setItem("bagluxeUsers", JSON.stringify(users));
+
+    localStorage.setItem("bagluxeUser", JSON.stringify({
+        name: name,
+        email: email
+    }));
+
+    alert("Account created successfully!");
+
+    updateAccountModal();
+
+}
+
+
+// SIGN IN
+
+function signIn(event) {
+
+    event.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+
+    const password = document.getElementById("loginPassword").value;
+
+    const users = JSON.parse(
+        localStorage.getItem("bagluxeUsers") || "[]"
+    );
+
+    const user = users.find(
+        user =>
+            user.email.toLowerCase() === email.toLowerCase() &&
+            user.password === password
+    );
+
+    if (!user) {
+
+        alert("Invalid email or password!");
+
+        return;
+
+    }
+
+    localStorage.setItem("bagluxeUser", JSON.stringify({
+        name: user.name,
+        email: user.email
+    }));
+
+    alert("Welcome to BAGLUXE!");
+
+    updateAccountModal();
+
+}
+
+
+// SIGN OUT
+
+function signOut() {
+
+    const confirmLogout = confirm(
+        "Are you sure you want to sign out?"
+    );
+
+    if (confirmLogout) {
+
+        localStorage.removeItem("bagluxeUser");
+
+        alert("You have signed out successfully!");
+
+        showSignIn();
+
+    }
+
+}
+
+
+// CLOSE WHEN CLICKING OUTSIDE
+
+document.getElementById("accountModal").addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === this) {
+            closeAccountModal();
+        }
+
+    }
+);
+
+
+// CLOSE WITH ESCAPE KEY
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeAccountModal();
+    }
+
+});
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

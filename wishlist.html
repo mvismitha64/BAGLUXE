@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BAGLUXE | My Wishlist</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* GENERAL */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #fff;
+            color: #211c18;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* TOP BAR */
+
+        .top-bar {
+            min-height: 45px;
+            background: #211c18;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+            font-size: 13px;
+        }
+
+        .top-left {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .top-left i {
+            margin-right: 5px;
+        }
+
+        .top-right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #c7a58f;
+        }
+
+
+        /* NAVBAR */
+
+        .navbar {
+            min-height: 102px;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+            padding: 0 55px;
+            border-bottom: 1px solid #eee;
+        }
+
+
+        /* LOGO */
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            justify-self: start;
+        }
+
+        .bag-icon {
+            font-size: 42px;
+            margin-right: 15px;
+        }
+
+        .logo-text h1 {
+            font-size: 30px;
+            font-weight: 500;
+            letter-spacing: 5px;
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+
+
+        /* NAV MENU */
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .nav-menu a {
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #63351e;
+        }
+
+
+        /* NAV ICONS */
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 25px;
+        }
+
+        .nav-icons a {
+            position: relative;
+            font-size: 22px;
+            transition: 0.3s;
+        }
+
+        .nav-icons a:hover {
+            color: #63351e;
+        }
+
+        .nav-icons span {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #292522;
+            color: white;
+            font: 11px Arial;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* WISHLIST SECTION */
+
+        .wishlist-section {
+            padding: 45px 5%;
+            min-height: 450px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .page-title h2 {
+            font-size: 30px;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .page-title p {
+            color: #777;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+
+        /* PRODUCT GRID */
+
+        #wishlist-products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .saved-product {
+            border: 1px solid #e5e5e5;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .saved-product:hover {
+            box-shadow: 0 5px 18px rgba(0,0,0,0.10);
+            transform: translateY(-3px);
+        }
+
+        .saved-product img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            background: #f5f5f5;
+        }
+
+        .saved-info {
+            padding: 18px;
+        }
+
+        .saved-info h3 {
+            font-size: 15px;
+            font-weight: 400;
+            min-height: 40px;
+            line-height: 21px;
+        }
+
+        .saved-price {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 12px 0 18px;
+        }
+
+
+        /* BUTTONS */
+
+        .saved-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .saved-buttons button {
+            flex: 1;
+            height: 40px;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .add-cart {
+            background: #63351e;
+            color: white;
+        }
+
+        .add-cart:hover {
+            background: #432313;
+        }
+
+        .remove-btn {
+            background: #eee;
+            color: #333;
+        }
+
+        .remove-btn:hover {
+            background: #ddd;
+        }
+
+
+        /* EMPTY WISHLIST */
+
+        .empty-wishlist {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 70px 15px;
+        }
+
+        .empty-wishlist i {
+            font-size: 55px;
+            color: #b9a69a;
+            margin-bottom: 20px;
+        }
+
+        .empty-wishlist h3 {
+            font-size: 23px;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .empty-wishlist p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            background: #63351e;
+            color: white;
+            padding: 13px 30px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .shop-btn:hover {
+            background: #432313;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media(max-width: 1200px) {
+
+            .navbar {
+                padding: 0 25px;
+                grid-template-columns: 1fr 2fr 1fr;
+            }
+
+            .nav-menu {
+                gap: 15px;
+                font-size: 11px;
+            }
+
+            .nav-icons {
+                gap: 20px;
+            }
+
+        }
+
+
+        @media(max-width: 900px) {
+
+            .navbar {
+                grid-template-columns: 1fr auto;
+                padding: 0 20px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            #wishlist-products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media(max-width: 550px) {
+
+            .top-bar {
+                padding: 0 10px;
+                font-size: 10px;
+            }
+
+            .top-left {
+                gap: 8px;
+            }
+
+            .top-right {
+                gap: 8px;
+            }
+
+            .social-icons {
+                gap: 10px;
+            }
+
+            .navbar {
+                min-height: 80px;
+            }
+
+            .bag-icon {
+                font-size: 30px;
+                margin-right: 8px;
+            }
+
+            .logo-text h1 {
+                font-size: 21px;
+                letter-spacing: 3px;
+            }
+
+            .logo-text p {
+                font-size: 8px;
+                letter-spacing: 2px;
+            }
+
+            .nav-icons {
+                gap: 16px;
+            }
+
+            .nav-icons a {
+                font-size: 18px;
+            }
+
+            #wishlist-products {
+                grid-template-columns: 1fr;
+            }
+
+            .wishlist-section {
+                padding: 30px 15px;
+            }
+
+            .page-title h2 {
+                font-size: 24px;
+            }
+
+            .saved-product img {
+                height: 300px;
+            }
+
+        }
+
+        /* ACCOUNT MODAL */
+
+.account-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 3000;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.account-modal.show {
+    display: flex;
+}
+
+.account-box {
+    background: #fffdf9;
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    position: relative;
+    text-align: center;
+    animation: accountOpen .3s ease;
+}
+
+@keyframes accountOpen {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.account-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 27px;
+    cursor: pointer;
+    color: #555;
+}
+
+.account-icon {
+    font-size: 45px;
+    color: #63351e;
+    margin-bottom: 15px;
+}
+
+.account-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.account-box p {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+.account-input {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 14px;
+}
+
+.account-input:focus {
+    border-color: #63351e;
+}
+
+.account-btn {
+    width: 100%;
+    padding: 13px;
+    background: #63351e;
+    color: white;
+    border: none;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.account-btn:hover {
+    background: #432313;
+}
+
+.account-switch {
+    margin-top: 18px;
+    font-size: 13px;
+    color: #777;
+}
+
+.account-switch button {
+    border: none;
+    background: none;
+    color: #63351e;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.account-user-email {
+    font-weight: 600;
+    color: #63351e !important;
+    word-break: break-word;
+}
+
+@media(max-width: 480px) {
+    .account-box {
+        padding: 30px 20px;
+    }
+}
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- TOP BAR -->
+
+    <div class="top-bar">
+
+        <div class="top-left">
+
+            <div>
+                <i class="fa-solid fa-truck"></i>
+                Free Shipping on Orders Above ₹999
+            </div>
+
+            <div>
+                <i class=""></i> <i class="fa-solid fa-rotate-left"></i>
+                Easy Returns & Exchanges
+            </div>
+
+        </div>
+
+        <div class="top-right">
+
+            <div class="social-icons">
+
+                <a href="#" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#" title="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#" title="Pinterest">
+                    <i class="fa-brands fa-pinterest-p"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+
+        <!-- LOGO -->
+
+        <a href="index.html" class="logo-area">
+
+            <div class="bag-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+
+            <div class="logo-text">
+
+                <h1>BAGLUXE</h1>
+
+                <p>HANDBAG STORE</p>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- CENTER NAVIGATION -->
+
+        <nav class="nav-menu">
+
+            <a href="index.html">HOME</a>
+
+            <a href="index.html#shop">SHOP</a>
+
+            <a href="index.html#categories">CATEGORIES</a>
+
+            <a href="index.html#new-arrivals">NEW ARRIVALS</a>
+
+            <a href="index.html#about">ABOUT US</a>
+
+            <a href="index.html#contact">CONTACT US</a>
+
+        </nav>
+
+
+
+        <!-- RIGHT SIDE ICONS -->
+
+        <div class="nav-icons">
+
+
+            <!-- SEARCH -->
+
+            <a href="#" title="Search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+            </a>
+
+
+
+            <!-- USER PROFILE -->
+
+           <a href="javascript:void(0)" 
+   class="icon-link" 
+   title="My Account"
+   onclick="openAccountModal()">
+
+    <i class="fa-regular fa-user"></i>
+
+</a>
+
+
+
+            <!-- WISHLIST -->
+
+            <a href="wishlist.html" title="Wishlist">
+
+                <i class="fa-regular fa-heart"></i>
+
+                <span id="nav-wishlist-count">0</span>
+
+            </a>
+
+
+
+            <!-- CART -->
+
+            <a href="cart.html" title="Shopping Cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span id="nav-cart-count">0</span>
+
+            </a>
+
+
+        </div>
+
+    </header>
+
+
+
+    <!-- WISHLIST SECTION -->
+
+    <section class="wishlist-section">
+
+
+        <div class="page-title">
+
+            <h2>MY WISHLIST ♡</h2>
+
+            <p>Your favourite handbags, saved in one place</p>
+
+        </div>
+
+
+        <div id="wishlist-products"></div>
+        <!-- ACCOUNT MODAL -->
+
+<div class="account-modal" id="accountModal">
+
+    <div class="account-box">
+
+        <button class="account-close"
+                onclick="closeAccountModal()">
+            &times;
+        </button>
+
+        <!-- SIGN IN SECTION -->
+
+        <div id="signInSection">
+
+            <div class="account-icon">
+                <i class="fa-regular fa-user"></i>
+            </div>
+
+            <h2>Welcome Back!</h2>
+
+            <p>Sign in to your BAGLUXE account</p>
+
+            <form onsubmit="signIn(event)">
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    class="account-input"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    class="account-input"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <button type="submit" class="account-btn">
+                    SIGN IN
+                </button>
+
+            </form>
+
+            <div class="account-switch">
+                New to BAGLUXE?
+                <button onclick="showSignUp()">
+                    Create Account
+                </button>
+            </div>
+
+        </div>
+
+        <!-- SIGN UP SECTION -->
+
+        <div id="signUpSection" style="display:none;">
+
+            <div class="account-icon">
+                <i class="fa-solid fa-user-plus"></i>
+            </div>
+
+            <h2>Create Account</h2>
+
+            <p>Join the BAGLUXE family</p>
+
+            <form onsubmit="signUp(event)">
+
+                <input
+                    type="text"
+                    id="signupName"
+                    class="account-input"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="signupEmail"
+                    class="account-input"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="signupPassword"
+                    class="account-input"
+                    placeholder="Create password"
+                    minlength="6"
+                    required
+                >
+
+                <button type="submit" class="account-btn">
+                    CREATE ACCOUNT
+                </button>
+
+            </form>
+
+            <div class="account-switch">
+                Already have an account?
+                <button onclick="showSignIn()">
+                    Sign In
+                </button>
+            </div>
+
+        </div>
+
+        <!-- SIGN OUT SECTION -->
+
+        <div id="signOutSection" style="display:none;">
+
+            <div class="account-icon">
+                <i class="fa-regular fa-circle-user"></i>
+            </div>
+
+            <h2>My Account</h2>
+
+            <p>You are signed in as</p>
+
+            <p class="account-user-email" id="accountEmail"></p>
+
+            <button class="account-btn" onclick="signOut()">
+                SIGN OUT
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    </section>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+
+        // GET WISHLIST DATA
+
+        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+
+        // GET CART DATA
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+
+        // UPDATE NAVBAR COUNTS
+
+        function updateCounts() {
+
+            document.getElementById("nav-wishlist-count").textContent =
+                wishlist.length;
+
+
+            document.getElementById("nav-cart-count").textContent =
+                cart.reduce((total, item) =>
+                    total + Number(item.quantity || 1), 0);
+
+        }
+
+
+
+        // SAVE DATA TO LOCAL STORAGE
+
+        function saveData() {
+
+            localStorage.setItem(
+                "wishlist",
+                JSON.stringify(wishlist)
+            );
+
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+
+            updateCounts();
+
+        }
+
+
+
+        // DISPLAY WISHLIST PRODUCTS
+
+        function displayWishlist() {
+
+            const container =
+                document.getElementById("wishlist-products");
+
+
+            container.innerHTML = "";
+
+
+            // EMPTY WISHLIST
+
+            if (wishlist.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="empty-wishlist">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                        <h3>Your wishlist is empty!</h3>
+
+                        <p>You haven't saved any handbags yet.</p>
+
+                        <a href="index.html" class="shop-btn">
+
+                            CONTINUE SHOPPING
+
+                        </a>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+
+            // DISPLAY PRODUCTS
+
+            wishlist.forEach((product, index) => {
+
+
+                const card = document.createElement("div");
+
+                card.className = "saved-product";
+
+
+
+                // PRODUCT IMAGE
+
+                const img = document.createElement("img");
+
+                img.src = product.image || "";
+
+                img.alt = product.name || "Handbag";
+
+                img.onerror = function() {
+                    this.src = "https://placehold.co/400x400?text=Product+Image";
+                };
+
+
+
+                // PRODUCT INFORMATION
+
+                const info = document.createElement("div");
+
+                info.className = "saved-info";
+
+
+
+                // PRODUCT NAME
+
+                const name = document.createElement("h3");
+
+                name.textContent = product.name || "Handbag";
+
+
+
+                // PRODUCT PRICE
+
+                const price = document.createElement("p");
+
+                price.className = "saved-price";
+
+                price.textContent = "₹" + (product.price || 0);
+
+
+
+                // BUTTONS
+
+                const buttons = document.createElement("div");
+
+                buttons.className = "saved-buttons";
+
+
+
+                // ADD TO CART BUTTON
+
+                const addButton = document.createElement("button");
+
+                addButton.className = "add-cart";
+
+                addButton.textContent = "ADD TO CART";
+
+
+                addButton.addEventListener("click", () => {
+
+                    moveToCart(index);
+
+                });
+
+
+
+                // REMOVE BUTTON
+
+                const removeButton = document.createElement("button");
+
+                removeButton.className = "remove-btn";
+
+                removeButton.textContent = "REMOVE";
+
+
+                removeButton.addEventListener("click", () => {
+
+                    removeWishlist(index);
+
+                });
+
+
+
+                // APPEND ELEMENTS
+
+                buttons.append(addButton, removeButton);
+
+                info.append(name, price, buttons);
+
+                card.append(img, info);
+
+                container.appendChild(card);
+
+
+            });
+
+        }
+
+
+
+        // REMOVE PRODUCT FROM WISHLIST
+
+        function removeWishlist(index) {
+
+            wishlist.splice(index, 1);
+
+            saveData();
+
+            displayWishlist();
+
+        }
+
+
+
+        // ADD PRODUCT TO CART
+
+        function moveToCart(index) {
+
+            const product = wishlist[index];
+
+
+            // CHECK IF PRODUCT ALREADY EXISTS IN CART
+
+            const existing = cart.find(item =>
+                item.name === product.name
+            );
+
+
+            if (existing) {
+
+                existing.quantity =
+                    Number(existing.quantity || 1) + 1;
+
+            } else {
+
+                cart.push({
+
+                    ...product,
+
+                    quantity: 1
+
+                });
+
+            }
+
+
+
+            // REMOVE PRODUCT FROM WISHLIST
+
+            wishlist.splice(index, 1);
+
+
+
+            // SAVE DATA
+
+            saveData();
+
+            displayWishlist();
+
+
+            alert("Product added to cart!");
+
+        }
+
+
+
+        // INITIALIZE PAGE
+
+        updateCounts();
+
+        displayWishlist();
+
+        // =====================================
+// ACCOUNT MODAL
+// =====================================
+
+// OPEN ACCOUNT MODAL
+
+function openAccountModal() {
+
+    document.getElementById("accountModal")
+        .classList.add("show");
+
+    updateAccountModal();
+
+}
+
+
+// CLOSE ACCOUNT MODAL
+
+function closeAccountModal() {
+
+    document.getElementById("accountModal")
+        .classList.remove("show");
+
+}
+
+
+// SHOW SIGN IN
+
+function showSignIn() {
+
+    document.getElementById("signInSection").style.display = "block";
+
+    document.getElementById("signUpSection").style.display = "none";
+
+    document.getElementById("signOutSection").style.display = "none";
+
+}
+
+
+// SHOW SIGN UP
+
+function showSignUp() {
+
+    document.getElementById("signInSection").style.display = "none";
+
+    document.getElementById("signUpSection").style.display = "block";
+
+    document.getElementById("signOutSection").style.display = "none";
+
+}
+
+
+// UPDATE ACCOUNT MODAL
+
+function updateAccountModal() {
+
+    const user = JSON.parse(
+        localStorage.getItem("bagluxeUser") || "null"
+    );
+
+    if (user && user.email) {
+
+        document.getElementById("signInSection").style.display = "none";
+
+        document.getElementById("signUpSection").style.display = "none";
+
+        document.getElementById("signOutSection").style.display = "block";
+
+        document.getElementById("accountEmail").textContent = user.email;
+
+    } else {
+
+        showSignIn();
+
+    }
+
+}
+
+
+// SIGN UP
+
+function signUp(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("signupName").value.trim();
+
+    const email = document.getElementById("signupEmail").value.trim();
+
+    const password = document.getElementById("signupPassword").value;
+
+    const users = JSON.parse(
+        localStorage.getItem("bagluxeUsers") || "[]"
+    );
+
+    const existingUser = users.find(
+        user => user.email.toLowerCase() === email.toLowerCase()
+    );
+
+    if (existingUser) {
+
+        alert("This email is already registered!");
+
+        return;
+
+    }
+
+    users.push({
+        name: name,
+        email: email,
+        password: password
+    });
+
+    localStorage.setItem("bagluxeUsers", JSON.stringify(users));
+
+    localStorage.setItem("bagluxeUser", JSON.stringify({
+        name: name,
+        email: email
+    }));
+
+    alert("Account created successfully!");
+
+    updateAccountModal();
+
+}
+
+
+// SIGN IN
+
+function signIn(event) {
+
+    event.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+
+    const password = document.getElementById("loginPassword").value;
+
+    const users = JSON.parse(
+        localStorage.getItem("bagluxeUsers") || "[]"
+    );
+
+    const user = users.find(
+        user =>
+            user.email.toLowerCase() === email.toLowerCase() &&
+            user.password === password
+    );
+
+    if (!user) {
+
+        alert("Invalid email or password!");
+
+        return;
+
+    }
+
+    localStorage.setItem("bagluxeUser", JSON.stringify({
+        name: user.name,
+        email: user.email
+    }));
+
+    alert("Welcome to BAGLUXE!");
+
+    updateAccountModal();
+
+}
+
+
+// SIGN OUT
+
+function signOut() {
+
+    const confirmLogout = confirm(
+        "Are you sure you want to sign out?"
+    );
+
+    if (confirmLogout) {
+
+        localStorage.removeItem("bagluxeUser");
+
+        alert("You have signed out successfully!");
+
+        showSignIn();
+
+    }
+
+}
+
+
+// CLOSE WHEN CLICKING OUTSIDE
+
+document.getElementById("accountModal").addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === this) {
+            closeAccountModal();
+        }
+
+    }
+);
+
+
+// CLOSE WITH ESCAPE KEY
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeAccountModal();
+    }
+
+});
+
+
+    </script>
+
+</body>
+</html>
+```
